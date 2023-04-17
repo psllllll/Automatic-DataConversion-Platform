@@ -27,3 +27,16 @@ export function deleteImageByIdAndUrl(pictureId,pictureUrl) {
     }
   });
 }
+
+//自动上传接口
+export function updateByIp(ip,parentFile,treeId){
+  return request({
+    url:'/system/picture/uploadByIp',
+    method:'post',
+    params:{
+      ip,
+      parentFile,
+      treeId
+    }
+  })
+}
