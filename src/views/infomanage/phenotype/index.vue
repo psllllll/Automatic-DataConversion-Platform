@@ -824,7 +824,7 @@ onMounted(() => {
 }
 
 :deep(.el-tree) {
-  background-color: rgb(183, 202, 189);
+  background-color: #fff;
 }
 
 :deep(
@@ -832,7 +832,7 @@ onMounted(() => {
       .el-tree-node.is-current
       > .el-tree-node__content
   ) {
-  background-color: #fff !important;
+  background-color: #f4f4f4 !important;
 }
 
 .card {
@@ -874,7 +874,7 @@ onMounted(() => {
 :deep(.el-dialog__header){
   margin-right: 0px;
   padding-right: 16px;
-  background: rgb(154,190,175);
+  background: #fff;
   margin-top: 10px;
 
   .el-dialog__title{
@@ -884,7 +884,7 @@ onMounted(() => {
 
 :deep(.dialog-footer){
   .el-button--primary{
-    background: rgb(85,123,116);
+    background:#fff;
   }
 }
 
@@ -957,7 +957,7 @@ onMounted(() => {
 
 .mokuai {
   margin-bottom: 0;
-  background-color: rgb(183, 202, 189);
+  background-color: #fff;
   // box-shadow:2px 2px 5px #000;
   // border:1px solid #ccc;
   // margin-bottom: 50px;

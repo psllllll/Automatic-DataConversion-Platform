@@ -1,24 +1,14 @@
 <template>
   <!-- <div :class="{ 'has-logo': showLogo }" :style="{ backgroundColor: sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground }">
      -->
-     <div :class="{ 'has-logo': showLogo }" style="background-color: rgb(154, 190, 175);">
-    <logo v-if="showLogo" :collapse="isCollapse" />
+  <div style="background-color: #fff">
+ <!--    <logo v-if="showLogo" :collapse="isCollapse" /> -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <!-- <el-menu
-        :default-active="activeMenu"
-        :collapse="isCollapse"
-        :background-color="sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground"
-        :text-color="sideTheme === 'theme-dark' ? variables.menuColor : variables.menuLightColor"
-        :unique-opened="true"
-        :active-text-color="theme"
-        :collapse-transition="false"
-        mode="vertical"
-      > -->
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        background-color="rgb(154, 190, 175)"
-        text-color="#fff"
+        background-color="#fff"
+        text-color="black"
         :unique-opened="true"
         active-text-color="#ffd04b"
         :collapse-transition="false"
@@ -65,11 +55,11 @@ const activeMenu = computed(() => {
 </script>
 
 <style lang="less" scoped>
-:deep(.sidebar-logo-container){
-  background-color: rgb(154, 190, 175) !important;
+:deep(.sidebar-logo-container) {
+  background-color: #fff !important;
 }
 
-:deep(.sidebar-title){
-  color: #fff !important;
+:deep(.sidebar-title) {
+  color: rgb(233, 221, 153) !important;
 }
 </style>
