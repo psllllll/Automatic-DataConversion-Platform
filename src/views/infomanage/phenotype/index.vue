@@ -126,9 +126,6 @@
             >
           </el-col>
           <el-col :span="1.5">
-            <!--<el-button type="danger" plain icon="Delete" size="small" :disabled="multiple"
-              @click="handleDelete" v-hasPermi="['system:logininfor:remove']">删除</el-button>
-          -->
             <el-button
               type="danger"
               plain
@@ -474,7 +471,6 @@ async function uploadFileSuccess() {
 
   isDisabled.value = false;
   const curNode = tree.value.getCurrentNode();
-  //upload.value.clearFiles();
 
   getList();
   rowClick(curNode);
@@ -651,24 +647,7 @@ const resetQuery = () => {
 };
 
 // 树控件
-const routesData = ref([
- /*  {
-    treeName: "Level one 1",
-    treeId: "1",
-    children: [
-      {
-        treeName: "Level two 1-1",
-        treeId: "11",
-        children: [
-          {
-            treeName: "Level three 1-1-1",
-            treeId: "111",
-          },
-        ],
-      },
-    ],
-  }, */
-]);
+const routesData = ref([]);
 
 // 树表单
 const treeForm = reactive({
@@ -907,9 +886,6 @@ onMounted(() => {
 }
 
 .right-box {
-  // background-color: #fff;
-  // border:1px solid #ccc;
-  // margin-bottom: 50px;
   margin-left: 20px;
 }
 
@@ -952,21 +928,14 @@ onMounted(() => {
 
 .upload {
   width: 100%;
-  // border:1px solid #ccc;
 }
 
 .mokuai {
   margin-bottom: 0;
   background-color: #fff;
-  // box-shadow:2px 2px 5px #000;
-  // border:1px solid #ccc;
-  // margin-bottom: 50px;
 }
 
 .right-box {
-  // background-color: #fff;
-  // border:1px solid #ccc;
-  // margin-bottom: 50px;
   margin-left: 20px;
 }
 
@@ -1003,11 +972,8 @@ onMounted(() => {
   color:#fff;
 
 }
-</style>
-<style  scoped>
+
 .shadow {
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
-  /* 0 3px 3px -2px rgba(0, 0, 0, 0.12),
-         0 1px 8px 0 rgba(0, 0, 0, 0.2); */
 }
 </style>
