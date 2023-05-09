@@ -179,13 +179,6 @@
               <el-button
                 size="small"
                 type="text"
-                icon="Document"
-                @click="openDrawer(scope.row)"
-                >预览
-              </el-button>
-              <el-button
-                size="small"
-                type="text"
                 icon="Edit"
                 @click="handleUpdate(scope.row)"
                 v-hasPermi="['system:file:edit']"
@@ -323,9 +316,6 @@
         </el-form-item>
       </el-form>
     </el-dialog>
-    <el-drawer v-model="drawer" :title="fileName" size="70%">
-      <ShowCSVTable :url="curFileUrl" max-custom-h="85vh" />
-    </el-drawer>
   </div>
 </template>
 
@@ -336,7 +326,7 @@ import { listFile, updateFile, delFile } from "@/api/infomanage/phenoType";
 import useUserStore from "@/store/modules/user";
 import { getToken } from "@/utils/auth";
 import ShowCSVTable from "./ShowCSVTable.vue";
-import { parseTime } from "@/utils/ruoyi";
+import { parseTime } from "@/utils/param";
 import { getTreeNodeIdsByNode } from "@/utils/tree";
 import { ElMessage } from "element-plus";
 
@@ -387,7 +377,7 @@ const rules = reactive({
 
 const drawer = ref(false); // 文件详情窗口开启状态
 const fileName = ref(""); // 选中文件名
-const curFileUrl = ref("");//文件路径
+const curFileUrl = ref(""); //文件路径
 
 //表单重置
 function resetForm() {
@@ -417,11 +407,15 @@ const handleBeforeUpload = (file) => {
   const fileType = file.name.substring(file.name.lastIndexOf(".") + 1);
   const isCsv = fileType === "csv";
   if (!isCsv) {
-    $modal.msgError(
+    /* $modal.msgError(
       "只能上传csv格式的文件！",
       "error",
       "vab-hey-message-error"
-    );
+    ); */
+    ElMessage({
+      message: "只能上传csv格式的文件！",
+      type: "error",
+    });
     return false;
   }
   return isCsv;
@@ -467,7 +461,11 @@ const dialogClosed = () => {
 
 // 文件上传成功回调
 async function uploadFileSuccess() {
-  $modal.msgSuccess("上传成功");
+  /* $modal.msgSuccess("上传成功"); */
+  ElMessage({
+    message: "上传成功",
+    type: "success",
+  });
 
   isDisabled.value = false;
   const curNode = tree.value.getCurrentNode();
@@ -500,6 +498,14 @@ async function updateData() {
           tableLoading.value = false;
           dialogFormVisible.value = false;
           getList();
+          /* ElMessage({
+            message: "修改成功",
+            type: "success",
+          }); */
+          ElMessage({
+            message: "导入失败，系统故障，请稍后再试",
+            type: "error",
+          });
         })
         .catch((err) => {
           loading.value = false;
@@ -653,7 +659,7 @@ const routesData = ref([]);
 const treeForm = reactive({
   treeName: "",
   isShow: true,
-}); 
+});
 
 const dialogTreeFormVisible = ref(false); // 树表单可见
 const dataTreeForm = ref(null); // 树表单dom实例
@@ -679,7 +685,7 @@ const tree = ref(null); // 数的dom实例
 const getTreeList = () => {
   getTree(treeType.value, 0, 1).then((res) => {
     routesData.value = res.data.children;
-    console.log(routesData.value,'9090');
+    console.log(routesData.value, "9090");
     nextTick(() => {
       if (!tree.value.getCurrentNode())
         tree.value.setCurrentNode(routesData.value[0]);
@@ -848,25 +854,23 @@ onMounted(() => {
   font-size: 20px;
 }
 
-
 /* 新增节点对话框 */
-:deep(.el-dialog__header){
+:deep(.el-dialog__header) {
   margin-right: 0px;
   padding-right: 16px;
   background: #fff;
   margin-top: 10px;
 
-  .el-dialog__title{
-    color:white;
+  .el-dialog__title {
+    color: white;
   }
 }
 
-:deep(.dialog-footer){
-  .el-button--primary{
-    background:#fff;
+:deep(.dialog-footer) {
+  .el-button--primary {
+    background: #fff;
   }
 }
-
 </style>
 <style lang="scss" scoped>
 .image_box {
@@ -963,14 +967,14 @@ onMounted(() => {
     margin-bottom: 30px;
   }
 }
-.addNode-button,.search-button{
+.addNode-button,
+.search-button {
   background: rgb(85, 123, 116);
 }
 
-.addExcel{
+.addExcel {
   background: grey;
-  color:#fff;
-
+  color: #fff;
 }
 
 .shadow {

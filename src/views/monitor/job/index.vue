@@ -186,17 +186,6 @@
                   <el-form-item prop="invokeTarget">
                      <template #label>
                         <span>
-                           调用方法
-                           <el-tooltip placement="top">
-                              <template #content>
-                                 <div>
-                                    Bean调用示例：ryTask.ryParams('ry')
-                                    <br />Class类调用示例：com.ruoyi.quartz.task.RyTask.ryParams('ry')
-                                    <br />参数说明：支持字符串，布尔类型，长整型，浮点型，整型
-                                 </div>
-                              </template>
-                              <el-icon><question-filled /></el-icon>
-                           </el-tooltip>
                         </span>
                      </template>
                      <el-input v-model="form.invokeTarget" placeholder="请输入调用目标字符串" />

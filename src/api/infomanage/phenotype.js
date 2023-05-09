@@ -9,17 +9,14 @@ export function listFile(query) {
   });
 }
 
-
 // 根据文件url获取文件内容
 export function getFileContent(fileUrl) {
   return request({
-    baseURL: `${import.meta.env.VITE_APP_UPLOAD_URL}/csv/${fileUrl}`,
+    baseURL: `${import.meta.env.VITE_APP_UPLOAD_URL}/csv${fileUrl}`,
     method: 'get',
     responseType: 'arraybuffer'
   });
 }
-
-
 
 // 新增树节点上的文件
 export function addFile(data) {
@@ -47,4 +44,15 @@ export function delFile(fileId) {
     url: '/system/file/' + fileId,
     method: 'delete'
   });
+}
+
+//发送文件
+export function getNewFiles(treeId){
+  return request({
+    url:'/system/file/prcess',
+    method:'get',
+    params: {
+      treeId
+    }
+  })
 }
